@@ -1,0 +1,15 @@
+.message {
+  width: 20%;
+  height: 80px;
+  margin: 10px auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-weight: 700;
+  font-size: 21px;
+  background: #f2f7fe;
+  color: #005fec;
+  border: 1px solid #005fec;
+  border-radius: 8px;
+}
