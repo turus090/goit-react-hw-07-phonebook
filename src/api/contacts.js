@@ -11,10 +11,10 @@ export const deleteContact = async id => {
   return data;
 };
 
-export const addContact = async (name, phone) => {
+export const addContact = async candidate => {
   const { data } = await axios.post(`${url}/contacts`, {
-    name,
-    phone,
+    name: candidate.name,
+    phone: candidate.phone,
   });
   return data;
 };

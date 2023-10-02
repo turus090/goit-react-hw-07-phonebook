@@ -30,8 +30,8 @@ export const deleteContactData = createAsyncThunk(
 
 export const addContactData = createAsyncThunk(
   'contacts/addContactData',
-  async (name, phone) => {
-    const response = await addContact(name, phone);
+  async candidate => {
+    const response = await addContact(candidate);
     return response;
   }
 );
