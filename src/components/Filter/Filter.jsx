@@ -1,13 +1,13 @@
 import s from './filter.module.css';
 
-const Filter = props => {
+const Filter = ({ filter, changeFilter }) => {
   return (
     <div className={s.block}>
       <p className={s.text}>Find contacts by name</p>
       <input
-        value={props.filter}
+        value={filter}
         onChange={e => {
-          props.changeFilter(e.target.value);
+          changeFilter(e.target.value);
         }}
         className={s.inputFilter}
         placeholder="Entry name"

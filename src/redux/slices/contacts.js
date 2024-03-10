@@ -23,8 +23,12 @@ export const fetchContactsData = createAsyncThunk(
 export const deleteContactData = createAsyncThunk(
   'contacts/deleteContactData',
   async idCandidate => {
-    await deleteContact(idCandidate);
-    return idCandidate;
+    try {
+      await deleteContact(idCandidate);
+      return idCandidate;
+    } catch (e) {
+      return null;
+    }
   }
 );
 

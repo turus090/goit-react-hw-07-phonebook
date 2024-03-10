@@ -3,25 +3,28 @@ import Button from '../Button/Button';
 import { Notify } from 'notiflix';
 import { useState } from 'react';
 
-const Form = props => {
+const Form = ({ list, createContact }) => {
   const [candidateName, setCandidateName] = useState('');
   const [candidatePhone, setCandidatePhone] = useState('');
-  const handleCreateContact = () => {
-    const result = props.list.find(
+  const handleCreateContact = e => {
+    e.preventDefault();
+    const result = list.find(
       contactItem =>
         contactItem.name.toLowerCase() === candidateName.toLowerCase()
     );
     if (result) {
       Notify.warning(`${candidateName} is already in contact`);
     } else {
-      props.createContact({
+      createContact({
         name: candidateName,
         phone: candidatePhone,
       });
+      setCandidateName('');
+      setCandidatePhone('');
     }
   };
   return (
-    <form className={s.form} onClick={e => e.preventDefault()}>
+    <form className={s.form} onSubmit={e => handleCreateContact(e)}>
       <p className={s.title}> Create new contact</p>
       <input
         className={s.wrapper}
@@ -45,7 +48,7 @@ const Form = props => {
         required
         placeholder="Entry new phone number"
       />
-      <Button text="Add contact" handleClick={handleCreateContact} />
+      <Button text="Add contact" type="submit" />
     </form>
   );
 };
